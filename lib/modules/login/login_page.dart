@@ -1,3 +1,4 @@
+import 'package:animated_card/animated_card.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:payflow/modules/login/login_controller.dart';
@@ -33,14 +34,15 @@ class _LoginPageState extends State<LoginPage> {
               color: AppColors.primary,
             ),
             Positioned(
-                top: 40,
-                left: 0,
-                right: 0,
-                child: Image.asset(
-                  AppImages.person,
-                  width: 208,
-                  height: 300,
-                )),
+              top: 40,
+              left: 0,
+              right: 0,
+              child: Image.asset(
+                AppImages.person,
+                width: 208,
+                height: 300,
+              ),
+            ),
             Positioned(
               bottom: size.height * 0.05,
               left: 0,
@@ -60,13 +62,17 @@ class _LoginPageState extends State<LoginPage> {
                       style: TextStyles.titleHome,
                     ),
                   ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(left: 40, right: 40, top: 40),
-                    child: SocialLoginButton(
-                      onTap: () {
-                        controller.googleSignIn(context);
-                      },
+                  AnimatedCard(
+                    direction: AnimatedCardDirection.bottom,
+                    duration: Duration(seconds: 2),
+                    child: Padding(
+                      padding:
+                          const EdgeInsets.only(left: 40, right: 40, top: 40),
+                      child: SocialLoginButton(
+                        onTap: () {
+                          controller.googleSignIn(context);
+                        },
+                      ),
                     ),
                   )
                 ],
